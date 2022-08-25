@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Easy Caixa</title>
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/versionDemo.css">
+</head>
+<body>
+  <main>
+    <!--version demo-->
+    <div class="logo">
+      <h2 id="h2One">Easy</h2>
+      <h2 id="h2Two">Caixa</h2>
+    </div>
+    <!--version demo-->
+    <section class="dates">
+      <div id="dataInicio">
+        <p>Data de início</p>
+        <input type="date" id="inputDateInicio" class="inputDates">
+      </div>
+      <div id="dataFim">
+        <p>Data de fim</p>
+        <input type="date" id="inputDateFim" class="inputDates">
+      </div>
+      <button id="sendDate">Enviar datas</button>
+    </section>
+
+    <section class="informeInitial">
+      <p>Olá!</p>
+      <p>Informe as datas socilitadas acima ;)</p>
+    </section>
+
+    <!--componente tabela de input-->
+    <section class="tables tablesInput">
+      <table class="tableComponentInput firstTable">
+        <thead>
+          <tr>
+            <td><strong>Especificação</strong></td>
+            <td><strong>Valor</strong></td>
+            <td><strong>Data</strong></td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><p>Cartão</p></td>
+            <td><p>R$<input type="number" id="card" class="valuesBuy card"></p></td>
+            <td rowspan="5" class="celulaDate"></td>
+          </tr>
+          <tr>
+            <td><p>Recebidos</p></td>
+            <td><p>R$<input type="number" id="received" class="valuesBuy received"></p></td>
+          </tr>
+          <tr>
+            <td><p>Crédito</p></td>
+            <td><p>R$<input type="number" id="credit" class="valuesBuy credit"></p></td>
+          </tr>
+          <tr>
+            <td><p>Pix</p></td>
+            <td><p>R$<input type="number" id="pix" class="valuesBuy pix"></p></td>
+          </tr>
+          <tr>
+            <td><p>Despesas</p></td>
+            <td><p>R$<input type="number" id="expenses" class="valuesBuy expenses"></p></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <div class="containerButton">
+      <input type="button" id="sumValues" class="button sumValues" value="Calcular total">
+    </div>
+
+    <!--componente tabela de valores-->
+    <section class="tables tablesValues">
+      <table class="tableComponent">
+        <thead>
+          <tr>
+            <td><strong>Especificação</strong></td>
+            <td><strong>Valor total</strong></td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><p>Cartão</p></td>
+            <td><p id="cardResult" class="cardResult"></p></td>
+          </tr>
+          <tr>
+            <td><p>Recebidos</p></td>
+            <td><p id="receivedResult" class="receivedResult"></p></td>
+          </tr>
+          <tr>
+            <td><p>Crédito</p></td>
+            <td><p id="creditResult" class="creditResult"></p></td>
+          </tr>
+          <tr>
+            <td><p>Pix</p></td>
+            <td><p id="pixResult" class="pixResult"></p></td>
+          </tr>
+          <tr>
+            <td><p>Despesas</p></td>
+            <td><p id="expensesResult" class="expensesResult"></p></td>
+          </tr>
+          <tr>
+            <td><p>Total</p></td>
+            <td><p id="totalResult" class="totalResult"></p></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <div class="containerButton">
+      <input type="button" id="recalc" class="button recalc" value="Recalcular">
+    </div>
+  </main>
+  <script type="module" src="js/script.js"></script>
+</body>
+</html>

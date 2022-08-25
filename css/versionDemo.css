@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+/*centralização da table*/
+
+@media (max-width: 736px) {
+  body,
+  main,
+  main.dates,
+  main.tables {
+    display: flex;
+  }
+
+  body {
+    min-height: 10vh;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+  }
+
+  main {
+    /*para celular ou separar em um media query*/
+    min-height: 85vh;
+    min-width: 85vw;
+    background-color: #dcdcdc;
+    border-radius: 10px;
+    padding: 1.5rem 1rem;
+    margin: 0.8rem;
+  }
+
+  main {
+    flex-direction: column;
+  }
+
+  main.dates {
+    margin-bottom: 1rem;
+    justify-content: inherit;
+  }
+
+  main.tables {
+    justify-content: center;
+  }
+  /*formatação da logo e textos*/
+
+  * {
+    font-family: 'Poppins';
+  }
+
+  .logo {
+    font-weight: 600;
+    line-height: 25px;
+  }
+
+  #h2One {
+    color: #1d6579;
+  }
+
+  #h2Two {
+    color: #83a50d;
+  }
+
+  .dates {
+    margin-top: 1.2rem;
+    color: #83a50d;
+  }
+
+  #sendDate {
+    color: #e5e5e5;
+    border-radius: 4px;
+    background-color: #1d6579;
+    padding: 4px 10px;
+    margin: 7px 0;
+  }
+
+  .informeInitial {
+    color: #1D6579;
+  }
+
+  .informeInitialNot {
+    display: none;
+  }
+
+  /*inputs*/
+
+  .inputDates {
+    background-color: #e5e5e5;
+    outline-color: #1d6579;
+    border-radius: 5px;
+    padding: 2.5px;
+  }
+
+  .valuesBuy {
+    background-color: transparent;
+    cursor: text;
+  }
+
+  /*tables*/
+
+  section.borderActive {
+    background-color: #e5e5e5;
+    border-radius: 5px;
+    padding: 1rem 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  section.showContainer {
+    background-color: #e5e5e5;
+    border-radius: 5px;
+    padding: 1rem 0;
+    margin-top: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .tableComponent {
+    width: 95%;
+  }
+
+  .firstTable {
+    border: none;
+  }
+
+  table {
+    font-size: 12pt;
+    position: relative;
+    margin: 5px 0;
+  }
+
+  table,
+  th,
+  td {
+    border: 1px solid #1d6579;
+    border-collapse: collapse;
+    color: #3b3a3a;
+  }
+
+  td {
+    padding: 2px 3px;
+  }
+}
+
+/*buttons*/
+
+.containerButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sumValues, .recalc {
+  background-color: #83A50D;
+  color: #e5e5e5;
+  border-radius: 4px;
+  padding: 4px 0px;
+  margin-top: 15px;
+  width: 40%;
+}
+
