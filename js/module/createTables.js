@@ -6,9 +6,7 @@ export default class CreateTables {
   }
   
   fetchMonth(url) {
-    fetch(url,  {
-      mode: 'no-cors'
-    }).then(async response => response.json()).then(response => {
+    fetch(url).then(async response => response.json()).then(response => {
       this.arrayData = response.map(element => {
         return Object.entries(element);
       });
@@ -115,7 +113,7 @@ export default class CreateTables {
   }
 
   init() {
-    this.fetchMonth('../api/quantMeses.json');
+    this.fetchMonth('../quantMeses.json');
     return this;
   }
 }
