@@ -7,7 +7,7 @@ export default class CreateTables {
   
   async fetchMonth(url) {
     try {
-      await fetch(url, {mode: 'no-cors'}).then(response => response.json()).then(response => {
+      await fetch(url).then(response => response.json()).then(response => {
         this.arrayData = response.map(element => {
           return Object.entries(element);
         });
@@ -118,7 +118,7 @@ export default class CreateTables {
   }
 
   init() {
-    this.fetchMonth('/EasyCaixa/quantMeses.json');
+    this.fetchMonth('https://jaqueuchoab.github.io/EasyCaixa/quantMeses.json');
     return this;
   }
 }
