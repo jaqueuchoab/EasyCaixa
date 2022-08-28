@@ -118,7 +118,7 @@ export default class CreateTables {
   }
 
   init() {
-    this.fetchMonth('../quantMeses.json');
+    this.fetchMonth('/EasyCaixa/quantMeses.json');
     return this;
   }
 }
