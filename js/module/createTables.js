@@ -7,11 +7,7 @@ export default class CreateTables {
   
   async fetchMonth(url) {
     try {
-      await fetch(url, {
-      method: 'GET',
-      headers: {
-        accept: 'application/json',
-      }}).then(response => response.json()).then(response => {
+      await fetch(url, {mode: 'no-cors'}).then(response => response.json()).then(response => {
         this.arrayData = response.map(element => {
           return Object.entries(element);
         });
