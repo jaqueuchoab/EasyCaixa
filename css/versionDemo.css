@@ -94,10 +94,14 @@
 
   /*tables*/
 
+  section.tablesInput {
+    margin-top: 0.8rem;
+  }
+
   section.borderActive {
     background-color: #e5e5e5;
     border-radius: 5px;
-    padding: 1rem 0;
+    padding: 0.4rem 0;
 
     display: flex;
     justify-content: center;
@@ -108,7 +112,7 @@
   section.showContainer {
     background-color: #e5e5e5;
     border-radius: 5px;
-    padding: 1rem 0;
+    padding: 0.4rem 0;
     margin-top: 15px;
 
     display: flex;
@@ -116,7 +120,7 @@
     justify-content: center;
   }
 
-  .tableComponent {
+  .tableComponent, .tableComponentInput {
     width: 95%;
   }
 
@@ -160,3 +164,21 @@
   width: 40%;
 }
 
+@media (max-width: 414px) {
+  body {
+    min-height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  main {
+    min-height: 90vh;
+  }
+
+  input.valuesBuy {
+    position: relative;
+    width: 60%;
+  }
+}

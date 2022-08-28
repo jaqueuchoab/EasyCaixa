@@ -15,9 +15,10 @@ export default class CreateTables {
           if (element[2][1] == this.datesInit[1]) {
             this.monthInit = element[0][1];
             this.amountDays = element[1][1];
+            this.monthReference = element[2][1]
             
             this.tablesLength = this.lengthTables(this.amountDays);
-            this.creatingTables(this.tablesLength, this.amountDays);
+            this.creatingTables(this.tablesLength, this.amountDays, this.monthReference);
             return this.tablesLength;
           }
         });
@@ -86,7 +87,7 @@ export default class CreateTables {
     return `${this.dayForShow}/${this.monthForShow}/${dateObj.getFullYear()}`;
   }
 
-  creatingTables(amountDays, amountDaysMonth){
+  creatingTables(amountDays, amountDaysMonth, monthReference){
     this.contentTable = document.querySelector('.tablesInput');
     this.tableComponent = document.querySelector('.tableComponentInput');
 
@@ -99,21 +100,33 @@ export default class CreateTables {
     }
 
     this.contentDate = document.querySelectorAll('.celulaDate');
+
+    this.incrementDay = this.datesInit[0];
+    this.incrementMonth = this.datesInit[1];
+
     this.contentDate.forEach(element => {
       this.paraghElement = document.createElement('p');
       element.appendChild(this.paraghElement);
       this.paraghElement.classList.add('dateContainer');
 
-      if (this.datesInit[0] <= amountDaysMonth)
+      if (this.incrementDay <= amountDaysMonth)
       {
-        this.paraghElement.innerText = this.datesCompostion(this.datesInit[0], this.datesInit[1]);
+        this.paraghElement.innerText = this.datesCompostion(this.incrementDay, this.incrementMonth);
       }
       else
       {
-        this.paraghElement.innerText = this.datesCompostion(this.datesInit[0], this.datesInit[1]);
+        if (this.incrementDay > amountDaysMonth) {
+          this.incrementDay *= 0;
+          this.incrementDay += 1;
+        }
+
+        if (this.datesEnd[1] == monthReference + 1) {
+          this.incrementMonth += 1;
+          this.paraghElement.innerText = this.datesCompostion(this.incrementDay, this.datesEnd[1]);
+        }
       }
 
-      this.datesInit[0]++;
+      this.incrementDay++;
     });
   }
 

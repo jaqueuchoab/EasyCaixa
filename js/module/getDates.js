@@ -14,7 +14,6 @@ export default class GetDates {
     // Limpa a data deixando apenas uma string com mês e dia, respectivamente
     this.dayMonthInitial = this.cleanDates(this.valueDateInitial);
     this.dayMonthEnd = this.cleanDates(this.valueDateEnd);
-
     // Array com as strings de data incial e data final
     this.dayMonthConst = [this.dayMonthInitial, this.dayMonthEnd];
     // Função que retorna as datas separadas em dia e mês, sendo a primeira array a data inicial e a segunda data final
