@@ -113,7 +113,7 @@ export default class CreateTables {
   }
 
   init() {
-    this.fetchMonth('../quantMeses.json');
+    this.fetchMonth('https://jaqueuchoab.github.io/quantMeses.json');
     return this;
   }
 }
