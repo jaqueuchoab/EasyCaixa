@@ -5,22 +5,31 @@ export default class CreateTables {
     this.datesEnd = this.datesArray[1];
   }
   
-  fetchMonth(url) {
-    fetch(url).then(async response => response.json()).then(response => {
-      this.arrayData = response.map(element => {
-        return Object.entries(element);
+  async fetchMonth(url) {
+    try {
+      await fetch(url, {
+      method: 'GET',
+      headers: {
+        accept: 'application/json',
+      }}).then(response => response.json()).then(response => {
+        this.arrayData = response.map(element => {
+          return Object.entries(element);
+        });
+        this.monthAndAmountDays = this.arrayData.map((element) => {
+          if (element[2][1] == this.datesInit[1]) {
+            this.monthInit = element[0][1];
+            this.amountDays = element[1][1];
+            
+            this.tablesLength = this.lengthTables(this.amountDays);
+            this.creatingTables(this.tablesLength, this.amountDays);
+            return this.tablesLength;
+          }
+        });
       });
-      this.monthAndAmountDays = this.arrayData.map((element) => {
-        if (element[2][1] == this.datesInit[1]) {
-          this.monthInit = element[0][1];
-          this.amountDays = element[1][1];
-          
-          this.tablesLength = this.lengthTables(this.amountDays);
-          this.creatingTables(this.tablesLength, this.amountDays);
-          return this.tablesLength;
-        }
-      });
-    });
+    }
+    catch(err) {
+      console.log(err);
+    }
   }
 
   lengthTables(monthInitIndex) {
@@ -113,7 +122,7 @@ export default class CreateTables {
   }
 
   init() {
-    this.fetchMonth('https://jaqueuchoab.github.io/quantMeses.json');
+    this.fetchMonth('../quantMeses.json');
     return this;
   }
 }
