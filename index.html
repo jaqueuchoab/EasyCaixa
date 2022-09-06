@@ -7,6 +7,12 @@
   <meta name="theme-color" content="#1d6579">
   <title>Easy Caixa</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="shortcut icon" href="/favicons/favicon.ico">
+  <link rel="shortcut icon" sizes="16x16" href="/favicons/favicon-16x16.png">
+  <link rel="shortcut icon" sizes="32x32" href="/favicons/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png">
+  <link rel="android-chrome" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+
 </head>
 <body>
   <main>
@@ -25,7 +31,7 @@
         <p>Data de fim</p>
         <input type="date" id="inputDateFim" class="inputDates">
       </div>
-      <button id="sendDate" class="button">Enviar datas</button>
+      <button id="sendDate" >Enviar datas</button>
     </section>
 
     <section class="informeInitial">
@@ -35,7 +41,7 @@
 
     <!--componente tabela de input-->
     <section class="tables tablesInput">
-      <table class="tableComponentInput firstTable">
+      <table class="tableComponentInput firstTable" id="test">
         <thead>
           <tr>
             <td><strong>Especificação</strong></td>
@@ -111,10 +117,14 @@
       </table>
     </section>
 
-    <div class="containerButton">
-      <input type="button" id="recalc" class="button recalc" value="Recalcular">
+    <div class="containerButton optionsEndContainer">
+      <input type="button" id="recalc" class="button recalc" value="Novo Caixa">
+      <input type="button" class="button generateReport" value="Gerar Relatório">
     </div>
   </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
+  <script src="js/jspdf.plugin.autotable.min.js"></script>
   <script type="module" src="js/script.js"></script>
 </body>
 </html>

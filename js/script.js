@@ -2,6 +2,7 @@ import GetDates from "./module/getDates.js";
 import CreateTables from "./module/createTables.js";
 import Calc from "./module/calc.js";
 import InsertValuesContainer from "./module/insertValuesContainer.js";
+import GenerateReport from "./module/generateReport.js";
 
 const getDates = new GetDates('#inputDateInicio', '#inputDateFim');
 
@@ -28,8 +29,17 @@ requireCalc.addEventListener('click', () => {
   insertValues.init();
 
   const recalc = document.querySelector('.recalc');
+  const report = document.querySelector('.generateReport');
   recalc.classList.add('showButtonRecalc');
+  report.classList.add('showButtonGenerate');
+
   recalc.addEventListener('click', () => {
   location.reload();
+  });
 });
+
+const generateReportButton = document.querySelector('.generateReport');
+generateReportButton.addEventListener('click', () => {
+  const generateReport = new GenerateReport('.tablesInput');
+  generateReport.createPDF();
 });

@@ -7,7 +7,7 @@
 table.firstTable,
 section.tablesValues,
 input.sumValues,
-input.recalc {
+input.recalc, input.generateReport {
   display: none;
 }
 
@@ -17,7 +17,7 @@ table.show {
 
 section.showContainer,
 input.showButtonSum,
-input.showButtonRecalc {
+input.showButtonRecalc, input.showButtonGenerate{
   display: block;
 }
 
