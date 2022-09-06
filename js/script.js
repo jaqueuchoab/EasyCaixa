@@ -12,7 +12,6 @@ sendDate.addEventListener('click', () => {
   document.querySelector('.firstTable').classList.add('show');
   document.querySelector('.informeInitial').classList.add('informeInitialNot');
 
-
   const createTables = new CreateTables(getDates.getDatesMethod());
   createTables.init();
 
@@ -40,6 +39,6 @@ requireCalc.addEventListener('click', () => {
 
 const generateReportButton = document.querySelector('.generateReport');
 generateReportButton.addEventListener('click', () => {
-  const generateReport = new GenerateReport('.tablesInput');
+  const generateReport = new GenerateReport();
   generateReport.createPDF();
 });
