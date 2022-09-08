@@ -1,11 +1,21 @@
+import Calc from './calc.js';
+
 export default class GenerateReport {
-  constructor(amoutDays) {
-    this.amoutDays = amoutDays;
+  constructor(amountDays, contentDate) {
+    this.amountDays = amountDays;
+    this.contentDate = contentDate;
   }
 
-  getContentsOfEachDay() {
+  getValues() {
+    const calc = new Calc('.card', '.received', '.credit', '.pix', '.expenses');
+    const specificationsActivation = calc.specification;
+    const valuesArray = calc.arrayOfValues(specificationsActivation);
+    const sumArrayValues = calc.init();
 
+    return [valuesArray, sumArrayValues];
   }
+
+
 
   createHeader(doc, img) {
     // Adicionando a imagem do cabeçalho do PDF
@@ -30,9 +40,11 @@ export default class GenerateReport {
     });
   }
 
-  generateTable(doc, contentValue, contentDate, amoutDays) {
-    console.log(amoutDays);
-    for (let index = 0; index < amoutDays; index++) {
+  generateTable(doc, contentValue, contentDate, amountDays) {
+    this.contentValue = contentValue[0];
+    this.contentValueSum = contentValue[1];
+
+    for (let index = 0; index < amountDays; index++) {
       doc.autoTable({
         margin: { top: 40, right: 40, bottom: 10, left: 40 },
         headStyles: { fillColor: [29, 101, 121] },
@@ -41,18 +53,37 @@ export default class GenerateReport {
         body: [
           [
             'Cartão',
-            `R$ ${contentValue}`,
-            { content: contentDate, colSpan: 1, rowSpan: 5 },
+            { content: `R$ ${this.contentValue[0][index]}`},
+            { content: contentDate[index], colSpan: 1, rowSpan: 5 },
           ],
-          ['Recebidos', `R$ ${contentValue}`],
-          ['Crédito', `R$ ${contentValue}`],
-          ['Pix', `R$ ${contentValue}`],
-          ['Despesas', `R$ ${contentValue}`],
+          ['Recebidos', `R$ ${this.contentValue[1][index]}`],
+          ['Crédito', `R$ ${this.contentValue[2][index]}`],
+          ['Pix', `R$ ${this.contentValue[3][index]}`],
+          ['Despesas', `R$ ${this.contentValue[4][index]}`],
         ],
         columnStyles: { 2: { halign: 'center', valign: 'middle' } },
         tableWidth: 120,
       });
     }
+    doc.autoTable({
+      margin: { top: 10, right: 40, bottom: 10, left: 40 },
+      headStyles: { fillColor: [29, 101, 121] },
+      theme: 'grid',
+      head: [['Relação Final', 'Total']],
+      body: [
+        [
+          'Cartão',
+          { content: `R$ ${this.contentValueSum[0]}`},
+        ],
+        ['Recebidos', `R$ ${this.contentValueSum[1]}`],
+        ['Crédito', `R$ ${this.contentValueSum[2]}`],
+        ['Pix', `R$ ${this.contentValueSum[3]}`],
+        ['Despesas', `R$ ${this.contentValueSum[4]}`],
+      ],
+      foot: [['Caixa Total', `R$ ${this.contentValueSum[5]}`]],
+      columnStyles: { 2: { halign: 'center', valign: 'middle' } },
+      tableWidth: 120,
+    });
   }
 
   imageUrl() {
@@ -66,7 +97,7 @@ export default class GenerateReport {
     // Criar header
     this.createHeader(this.report, this.imageUrl());
     // Corpo da tabela
-    this.generateTable(this.report, '54,67', '02/09/2022', this.amoutDays);
+    this.generateTable(this.report, this.getValues(), this.contentDate, this.amountDays);
 
     this.report.save('table.pdf');
   }

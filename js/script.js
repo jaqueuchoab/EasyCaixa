@@ -1,8 +1,8 @@
-import GetDates from "./module/getDates.js";
-import CreateTables from "./module/createTables.js";
-import Calc from "./module/calc.js";
-import InsertValuesContainer from "./module/insertValuesContainer.js";
-import GenerateReport from "./module/generateReport.js";
+import GetDates from './module/getDates.js';
+import CreateTables from './module/createTables.js';
+import Calc from './module/calc.js';
+import InsertValuesContainer from './module/insertValuesContainer.js';
+import GenerateReport from './module/generateReport.js';
 
 const getDates = new GetDates('#inputDateInicio', '#inputDateFim');
 
@@ -18,27 +18,40 @@ sendDate.addEventListener('click', () => {
   setInterval(() => {
     document.querySelector('.sumValues').classList.add('showButtonSum');
   }, 3000);
-});
 
-const requireCalc = document.querySelector('#sumValues');
-requireCalc.addEventListener('click', () => {
-  const calc = new Calc('.card', '.received', '.credit', '.pix', '.expenses');
+  const requireCalc = document.querySelector('#sumValues');
+  requireCalc.addEventListener('click', () => {
+    const calc = new Calc('.card', '.received', '.credit', '.pix', '.expenses');
 
-  const insertValues = new InsertValuesContainer(['.cardResult', '.receivedResult', '.creditResult', '.pixResult', '.expensesResult', '.totalResult'], calc.init());
-  insertValues.init();
+    const insertValues = new InsertValuesContainer(
+      [
+        '.cardResult',
+        '.receivedResult',
+        '.creditResult',
+        '.pixResult',
+        '.expensesResult',
+        '.totalResult',
+      ],
+      calc.init(),
+    );
+    insertValues.init();
 
-  const recalc = document.querySelector('.recalc');
-  const report = document.querySelector('.generateReport');
-  recalc.classList.add('showButtonRecalc');
-  report.classList.add('showButtonGenerate');
+    const recalc = document.querySelector('.recalc');
+    const report = document.querySelector('.generateReport');
+    recalc.classList.add('showButtonRecalc');
+    report.classList.add('showButtonGenerate');
 
-  recalc.addEventListener('click', () => {
-  location.reload();
+    recalc.addEventListener('click', () => {
+      location.reload();
+    });
   });
-});
 
-const generateReportButton = document.querySelector('.generateReport');
-generateReportButton.addEventListener('click', () => {
-  const generateReport = new GenerateReport();
-  generateReport.createPDF();
+  const generateReportButton = document.querySelector('.generateReport');
+  generateReportButton.addEventListener('click', () => {
+    const amountDays = createTables.tablesLength + 1;
+    const datesArray = createTables.datesContentArray;
+
+    const generateReport = new GenerateReport(amountDays, datesArray);
+    generateReport.createPDF();
+  });
 });
