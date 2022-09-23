@@ -10,7 +10,7 @@
   }
 
   body {
-    min-height: 10vh;
+    min-height: 100vh;
     width: 100vw;
     justify-content: center;
     align-items: center;
@@ -18,12 +18,10 @@
 
   main {
     /*para celular ou separar em um media query*/
-    min-height: 85vh;
-    min-width: 85vw;
+    min-height: 100vh;
+    width: 100vw;
     background-color: #dcdcdc;
-    border-radius: 10px;
     padding: 1.5rem 1rem;
-    margin: 0.8rem;
   }
 
   main {
@@ -79,7 +77,6 @@
   }
 
   /*inputs*/
-
   .inputDates {
     background-color: #e5e5e5;
     outline-color: #1d6579;
@@ -89,6 +86,8 @@
 
   .valuesBuy {
     background-color: transparent;
+    margin-left: 1px;
+    outline: none;
     cursor: text;
   }
 
@@ -155,7 +154,11 @@
   align-items: center;
 }
 
-.sumValues, .recalc {
+.optionsEndContainer{
+  justify-content: space-around;
+}
+
+.button {
   background-color: #83A50D;
   color: #e5e5e5;
   border-radius: 4px;
@@ -173,12 +176,8 @@
     align-items: center;
   }
 
-  main {
-    min-height: 90vh;
-  }
-
   input.valuesBuy {
     position: relative;
-    width: 60%;
+    width: 70%;
   }
 }

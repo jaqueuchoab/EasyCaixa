@@ -27,6 +27,7 @@ export default class CreateTables {
     catch(err) {
       console.log(err);
     }
+    return this.tablesLength;
   }
 
   lengthTables(monthInitIndex) {
@@ -90,6 +91,7 @@ export default class CreateTables {
   creatingTables(amountDays, amountDaysMonth, monthReference){
     this.contentTable = document.querySelector('.tablesInput');
     this.tableComponent = document.querySelector('.tableComponentInput');
+    this.datesContentArray = [];
 
     for (let index = 0; index < amountDays; index++) {
       this.tableElement = document.createElement('table');
@@ -104,7 +106,7 @@ export default class CreateTables {
     this.incrementDay = this.datesInit[0];
     this.incrementMonth = this.datesInit[1];
 
-    this.contentDate.forEach(element => {
+    this.contentDate.forEach((element, index) => {
       this.paraghElement = document.createElement('p');
       element.appendChild(this.paraghElement);
       this.paraghElement.classList.add('dateContainer');
@@ -112,6 +114,7 @@ export default class CreateTables {
       if (this.incrementDay <= amountDaysMonth)
       {
         this.paraghElement.innerText = this.datesCompostion(this.incrementDay, this.incrementMonth);
+        this.datesContentArray[index] = this.datesCompostion(this.incrementDay, this.incrementMonth);
       }
       else
       {
@@ -123,6 +126,7 @@ export default class CreateTables {
         if (this.datesEnd[1] == monthReference + 1) {
           this.incrementMonth += 1;
           this.paraghElement.innerText = this.datesCompostion(this.incrementDay, this.datesEnd[1]);
+          this.datesContentArray[index] = this.datesCompostion(this.incrementDay, this.incrementMonth);
         }
       }
 
