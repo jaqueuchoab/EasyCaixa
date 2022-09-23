@@ -10,9 +10,9 @@ Antes de realmente colocar a mão na massa, ou melhor, no teclado. Conversei com
 
 Com isso, foi definido as seguintes **regras**:
 
-     1. Data inicial e Data final: Existe um período de tempo em que é iniciado e finalizado um caixa, portanto há a necessidade de pedir ao usuário em que dia o caixa se iniciou e em qual dia finalizou.
-
-     2. Conjunto de formas de pagamento e despesas diárias, dentro do período de caixa ativo. No caso da empresa cobaia, há: Cartão, Pix, Crédito, Recebidos e Dinheiro em espécie. 
+> 1. Data inicial e Data final: Existe um período de tempo em que é iniciado e finalizado um caixa, portanto há a necessidade de pedir ao usuário em que dia o caixa se iniciou e em qual dia finalizou.
+>
+> 2. Conjunto de formas de pagamento e despesas diárias, dentro do período de caixa ativo. No caso da empresa cobaia, há: Cartão, Pix, Crédito, Recebidos e Dinheiro em espécie. 
 
 Busquei trazer facilidade para a interface pensando nas dificuldades reais de um usuário ao usar o software, para isso desenvolvi o protótipo no figma e ao longo do desenvolvimento busquei formas de trazer uma interface limpa e que seja intuitiva. 
 
