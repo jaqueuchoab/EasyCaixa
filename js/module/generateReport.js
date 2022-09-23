@@ -15,8 +15,6 @@ export default class GenerateReport {
     return [valuesArray, sumArrayValues];
   }
 
-
-
   createHeader(doc, img) {
     // Adicionando a imagem do cabeçalho do PDF
     doc.addImage(img, 'PNG', 39, 10);
