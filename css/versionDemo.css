@@ -14,14 +14,17 @@
     width: 100vw;
     justify-content: center;
     align-items: center;
+    background-color: #dcdcdc;
+    flex-direction: column;
   }
 
   main {
     /*para celular ou separar em um media query*/
-    min-height: 100vh;
+    min-height: 98vh;
     width: 100vw;
     background-color: #dcdcdc;
-    padding: 1.5rem 1rem;
+    padding: 1.3rem 1rem 0 1rem;
+    position: relative;
   }
 
   main {
@@ -36,6 +39,7 @@
   main.tables {
     justify-content: center;
   }
+
   /*formatação da logo e textos*/
 
   * {
@@ -48,28 +52,35 @@
   }
 
   #h2One {
+    font-size: 1.8rem;
+    line-height: 40px;
     color: #1d6579;
   }
 
   #h2Two {
+    font-size: 1.8rem;
     color: #83a50d;
   }
 
   .dates {
     margin-top: 1.2rem;
+    font-weight: 500;
     color: #83a50d;
   }
 
   #sendDate {
     color: #e5e5e5;
     border-radius: 4px;
-    background-color: #1d6579;
+    font-weight: 500;
+    background-color: #83a50d;
+    box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.25);
     padding: 4px 10px;
-    margin: 7px 0;
+    margin: 1rem 0;
   }
 
   .informeInitial {
     color: #1D6579;
+    font-weight: 500;
   }
 
   .informeInitialNot {
@@ -80,6 +91,7 @@
   .inputDates {
     background-color: #e5e5e5;
     outline-color: #1d6579;
+    box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.15);
     border-radius: 5px;
     padding: 2.5px;
   }
@@ -95,6 +107,7 @@
 
   section.tablesInput {
     margin-top: 0.8rem;
+    box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.25);
   }
 
   section.borderActive {
@@ -112,7 +125,6 @@
     background-color: #e5e5e5;
     border-radius: 5px;
     padding: 0.4rem 0;
-    margin-top: 15px;
 
     display: flex;
     align-items: center;
@@ -144,9 +156,41 @@
   td {
     padding: 2px 3px;
   }
+
+  /*table values*/
+  section.tablesValues {
+    box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.25);
+  }
+
+  div.fixedRectangle {
+    display: flex;
+    align-self: center;
+    position: relative;
+    bottom: 0;
+    width: 300px;
+    height: 14px;
+    background: #1d6579;
+    border-radius: 8px 8px 0px 0px;
+  }
+
+
+  div.circleIndex {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    background: #1d6579;
+
+    top: -30px;
+    right: -30px;
+  }
 }
 
 /*buttons*/
+
+input[type="button"] {
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.25);
+}
 
 .containerButton {
   display: flex;
@@ -159,11 +203,11 @@
 }
 
 .button {
-  background-color: #83A50D;
+  background-color: #83a50d;
   color: #e5e5e5;
   border-radius: 4px;
   padding: 4px 0px;
-  margin-top: 15px;
+  margin: 20px 0px;
   width: 40%;
 }
 

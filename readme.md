@@ -1,4 +1,4 @@
-# Easy Caixa 
+# Easy Caixa  
 
 ## **Ideia do projeto**
 
