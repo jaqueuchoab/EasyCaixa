@@ -7,7 +7,7 @@ export default class GenerateReport {
   }
 
   getValues() {
-    const calc = new Calc('.card', '.received', '.credit', '.pix', '.expenses');
+    const calc = new Calc('.card', '.received', '.credit', '.pix', '.expenses', '.closed');
     const specificationsActivation = calc.specification;
     const valuesArray = calc.arrayOfValues(specificationsActivation);
     const sumArrayValues = calc.init();
@@ -58,6 +58,7 @@ export default class GenerateReport {
           ['Crédito', `R$ ${this.contentValue[2][index]}`],
           ['Pix', `R$ ${this.contentValue[3][index]}`],
           ['Despesas', `R$ ${this.contentValue[4][index]}`],
+          ['Fechamento', `R$ ${this.contentValue[5][index]}`]
         ],
         columnStyles: { 2: { halign: 'center', valign: 'middle' } },
         tableWidth: 120,
@@ -77,6 +78,7 @@ export default class GenerateReport {
         ['Crédito', `R$ ${this.contentValueSum[2]}`],
         ['Pix', `R$ ${this.contentValueSum[3]}`],
         ['Despesas', `R$ ${this.contentValueSum[4]}`],
+        ['Fechamento', `R$ ${this.contentValueSum[5]}`]
       ],
       foot: [['Caixa Total', `R$ ${this.contentValueSum[5]}`]],
       columnStyles: { 2: { halign: 'center', valign: 'middle' } },

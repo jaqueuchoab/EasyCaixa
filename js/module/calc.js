@@ -1,11 +1,12 @@
 export default class Calc {
-  constructor(card, received, credit, pix, expenses){
+  constructor(card, received, credit, pix, expenses, closed){
     this.specification = [
       this.valuesCard = document.querySelectorAll(card),
       this.valuesReceived = document.querySelectorAll(received),
       this.valuesCredit = document.querySelectorAll(credit),
       this.valuesPix = document.querySelectorAll(pix),
-      this.valuesExpenses = document.querySelectorAll(expenses)
+      this.valuesExpenses = document.querySelectorAll(expenses),
+      this.valuesExpenses = document.querySelectorAll(closed)
     ]
   }
 

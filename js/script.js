@@ -21,7 +21,7 @@ sendDate.addEventListener('click', () => {
 
   const requireCalc = document.querySelector('#sumValues');
   requireCalc.addEventListener('click', () => {
-    const calc = new Calc('.card', '.received', '.credit', '.pix', '.expenses');
+    const calc = new Calc('.card', '.received', '.credit', '.pix', '.expenses', '.closed');
 
     const insertValues = new InsertValuesContainer(
       [
@@ -30,6 +30,7 @@ sendDate.addEventListener('click', () => {
         '.creditResult',
         '.pixResult',
         '.expensesResult',
+        '.closedResult',
         '.totalResult',
       ],
       calc.init(),
