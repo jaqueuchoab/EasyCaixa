@@ -8,7 +8,7 @@ export default class InsertValuesContainer {
 
   relatingContainerWithValue() {
     this.containersAddress.forEach((element, index) => {
-      element.innerText = `R$ ${this.valuesInsert[index]}`;
+      element.innerText = `R$ ${this.valuesInsert[index].toFixed(2)}`;
     });
   }
 
