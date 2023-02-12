@@ -13,10 +13,13 @@ export default class CreateTables {
         });
         this.monthAndAmountDays = this.arrayData.map((element) => {
           if (element[2][1] == this.datesInit[1]) {
+            // Mês
             this.monthInit = element[0][1];
+            // Quantidade de dias do mês
             this.amountDays = element[1][1];
-            this.monthReference = element[2][1]
-            
+            // Código do mês
+            this.monthReference = element[2][1];
+
             this.tablesLength = this.lengthTables(this.amountDays);
             this.creatingTables(this.tablesLength, this.amountDays, this.monthReference);
             return this.tablesLength;
@@ -31,6 +34,7 @@ export default class CreateTables {
   }
 
   lengthTables(monthInitIndex) {
+    console.log(this.datesInit, this.datesEnd);
     if (this.datesInit[1] > this.datesEnd[1])
     {
       //indicar invalido
@@ -48,7 +52,7 @@ export default class CreateTables {
         {
           if (this.datesInit[0] > this.datesEnd[0])
           {
-            this.quantDays = monthInitIndex - (this.datesInit[0] - this.datesEnd[0]) + 1;
+            this.quantDays = monthInitIndex - (this.datesInit[0] - this.datesEnd[0]);
           }
           else
           {
@@ -71,13 +75,12 @@ export default class CreateTables {
           else
           {
             if (this.datesInit[1] == this.datesEnd[1]) {
-              this.quantDays = this.datesEnd[0] - this.datesInit[0] + 1;
+              this.quantDays = this.datesEnd[0] - this.datesInit[0];
             }
           }
         }
       }
     }
-    this.quantDays -= 1
     return this.quantDays;
   }
 
@@ -132,6 +135,11 @@ export default class CreateTables {
 
       this.incrementDay++;
     });
+
+    this.qtdTablesCreated = amountDays + 1;
+    console.log(this.qtdTablesCreated)
+
+    return this.qtdTablesCreated;
   }
 
   init() {
