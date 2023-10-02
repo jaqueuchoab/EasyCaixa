@@ -30,15 +30,18 @@ export default class GetDates {
     return this.dateChange;
   }
 
-  // Função que retorna dois arrays com dia e mês, incial e final
   /**
    * pt-BR: sliceDateParseInt recebe uma array/object com duas posições que correspondem a strings do
    * dia/mês inicial e o dia/mês final do período, o método corta cada string ao meio os organizando em uma array
    * no formato [dia, mês] separando o dia do mês e os transformando em um tipo inteiro.
    * 
+   * en-US: sliceDateParseInt receives an array/object with two positions that correspond to strings from the
+   * starting day/month and the ending day/month of the period, the method cuts each string in half organizing 
+   * them into an array in the format [day, month] separating the day of the month and transforming them into an 
+   * integer type.
    * 
-   * @param {Object[]} arrayStringsDate
-   * @returns 
+   * @param {String[]} arrayStringsDate
+   * @returns {int[]} [arrayDayMonthInit, arrayDayMonthEnd]
    */
   sliceDateParseInt(arrayStringsDate)
   {
@@ -47,18 +50,25 @@ export default class GetDates {
     return [this.arrayDayMonthInit, this.arrayDayMonthEnd];
   }
 
-  getDatesMethod()
+  /**
+   * pt-BR: getDatesMethod é um método que captura os valores dos elementos de input e utiliza outros métodos da
+   * classe GetDates para formatar o dia/mês para que posteriormente ele possa ser usado.
+   * 
+   * en-US: getDatesMethod is a method that captures the values ​​of input elements and uses other methods of the 
+   * GetDates class to format the day/month so that it can be used later.
+   */
+  formattingDatesMethod()
   {
-    // Armazenam os valores alocados nos elementos de input
     this.valueDateInitial = this.dateInitial.value;
     this.valueDateEnd = this.dateEnd.value;
-    // cleanDates limpa as datas removendo o ano e deixando apenas uma string com dia e mês, respectivamente
     this.dayMonthInitial = this.cleanDates(this.valueDateInitial);
     this.dayMonthEnd = this.cleanDates(this.valueDateEnd);
-    // Array com as strings de data incial e data final
     this.dayMonthConst = [this.dayMonthInitial, this.dayMonthEnd];
-    // slideStringDate retorna as datas separadas em dia e mês, sendo a primeira array a data inicial e a segunda data final
     this.arrayDatesInt = this.sliceDateParseInt(this.dayMonthConst);
     return this.arrayDatesInt;
+  }
+
+  getDates() {
+    return this.formattingDatesMethod();
   }
 }
