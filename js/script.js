@@ -1,4 +1,4 @@
-import GetDates from './module/getDates.js';
+import GetDates from './module/GetDates.js';
 import CreateTables from './module/createTables.js';
 import Calc from './module/calc.js';
 import InsertValuesContainer from './module/insertValuesContainer.js';
