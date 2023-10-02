@@ -37,7 +37,7 @@ export default class CreateTables {
     console.log(this.datesInit, this.datesEnd);
     if (this.datesInit[1] > this.datesEnd[1])
     {
-      //indicar invalido
+      //indicar invalido - não tratado
       console.log("aaaaaaa");
     }
     else
