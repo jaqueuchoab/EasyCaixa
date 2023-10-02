@@ -15,24 +15,28 @@
 
 </head>
 <body>
+  <!--
+    id: nome-do-id
+    class: nomeClass
+  -->
   <main>
     <div class="circleIndex"></div>
     <!--version demo-->
     <div class="logo">
-      <h2 id="h2One">Easy</h2>
-      <h2 id="h2Two">Caixa</h2>
+      <h2 id="easy-title">Easy</h2>
+      <h2 id="caixa-title">Caixa</h2>
     </div>
     <!--version demo-->
     <section class="dates">
-      <div id="dataInicio">
+      <div id="data-inicio">
         <p>Data de início</p>
-        <input type="date" id="inputDateInicio" class="inputDates">
+        <input type="date" id="input-date-inicio" class="inputDates">
       </div>
-      <div id="dataFim">
+      <div id="data-fim">
         <p>Data de fim</p>
-        <input type="date" id="inputDateFim" class="inputDates">
+        <input type="date" id="input-date-fim" class="inputDates">
       </div>
-      <button id="sendDate" >Enviar datas</button>
+      <button id="send-date">Enviar datas</button>
     </section>
 
     <section class="informeInitial">
@@ -42,7 +46,7 @@
 
     <!--componente tabela de input-->
     <section class="tables tablesInput">
-      <table class="tableComponentInput firstTable" id="test">
+      <table class="tableComponentInput templateTable">
         <thead>
           <tr>
             <td><strong>Especificação</strong></td>
@@ -53,40 +57,40 @@
         <tbody>
           <tr>
             <td><p>Cartão</p></td>
-            <td><p>R$<input type="number" id="card" class="valuesBuy card"></p></td>
+            <td><p>R$<input type="number" class="valuesBuy card"></p></td>
             <td rowspan="6" class="celulaDate"></td>
           </tr>
           <tr>
             <td><p>Recebidos</p></td>
-            <td><p>R$<input type="number" id="received" class="valuesBuy received"></p></td>
+            <td><p>R$<input type="number" class="valuesBuy received"></p></td>
           </tr>
           <tr>
             <td><p>Crédito</p></td>
-            <td><p>R$<input type="number" id="credit" class="valuesBuy credit"></p></td>
+            <td><p>R$<input type="number" class="valuesBuy credit"></p></td>
           </tr>
           <tr>
             <td><p>Pix</p></td>
-            <td><p>R$<input type="number" id="pix" class="valuesBuy pix"></p></td>
+            <td><p>R$<input type="number" class="valuesBuy pix"></p></td>
           </tr>
           <tr>
             <td><p>Despesas</p></td>
-            <td><p>R$<input type="number" id="expenses" class="valuesBuy expenses"></p></td>
+            <td><p>R$<input type="number" class="valuesBuy expenses"></p></td>
           </tr>
           <tr>
             <td><p>Fechamento</p></td>
-            <td><p>R$<input type="number" id="closed" class="valuesBuy closed"></p></td>
+            <td><p>R$<input type="number" class="valuesBuy closed"></p></td>
           </tr>
         </tbody>
       </table>
     </section>
 
     <div class="containerButton">
-      <input type="button" id="sumValues" class="button sumValues" value="Calcular total">
+      <input type="button" id="sum-values-button" class="buttonGeral calcTotalButton" value="Calcular total">
     </div>
 
     <!--componente tabela de valores-->
     <section class="tables tablesValues">
-      <table class="tableComponent">
+      <table class="tableComponentResult">
         <thead>
           <tr>
             <td><strong>Especificação</strong></td>
@@ -96,39 +100,39 @@
         <tbody>
           <tr>
             <td><p>Cartão</p></td>
-            <td><p id="cardResult" class="cardResult"></p></td>
+            <td><p class="cardResult"></p></td>
           </tr>
           <tr>
             <td><p>Recebidos</p></td>
-            <td><p id="receivedResult" class="receivedResult"></p></td>
+            <td><p class="receivedResult"></p></td>
           </tr>
           <tr>
             <td><p>Crédito</p></td>
-            <td><p id="creditResult" class="creditResult"></p></td>
+            <td><p class="creditResult"></p></td>
           </tr>
           <tr>
             <td><p>Pix</p></td>
-            <td><p id="pixResult" class="pixResult"></p></td>
+            <td><p class="pixResult"></p></td>
           </tr>
           <tr>
             <td><p>Despesas</p></td>
-            <td><p id="expensesResult" class="expensesResult"></p></td>
+            <td><p class="expensesResult"></p></td>
           </tr>
           <tr>
             <td><p>Fechamento</p></td>
-            <td><p id="closedResult" class="closedResult"></p></td>
+            <td><p class="closedResult"></p></td>
           </tr>
           <tr>
             <td><p>Total</p></td>
-            <td><p id="totalResult" class="totalResult"></p></td>
+            <td><p class="totalResult"></p></td>
           </tr>
         </tbody>
       </table>
     </section>
 
     <div class="containerButton optionsEndContainer">
-      <input type="button" id="recalc" class="button recalc" value="Novo Caixa">
-      <input type="button" class="button generateReport" value="Gerar Relatório">
+      <input type="button" id="recalc" class="buttonGeral recalc" value="Novo Caixa">
+      <input type="button" class="buttonGeral generateReport" value="Gerar Relatório">
     </div>
   </main>
 

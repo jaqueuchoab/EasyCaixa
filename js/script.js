@@ -4,22 +4,21 @@ import Calc from './module/calc.js';
 import InsertValuesContainer from './module/insertValuesContainer.js';
 import GenerateReport from './module/generateReport.js';
 
-const getDates = new GetDates('#inputDateInicio', '#inputDateFim');
+const getDates = new GetDates('#input-date-inicio', '#input-date-fim');
 
-const sendDate = document.querySelector('#sendDate');
+const sendDate = document.querySelector('#send-date');
 sendDate.addEventListener('click', () => {
   document.querySelector('.tablesInput').classList.add('borderActive');
-  document.querySelector('.firstTable').classList.add('show');
   document.querySelector('.informeInitial').classList.add('informeInitialNot');
 
   const createTables = new CreateTables(getDates.getDatesMethod());
   createTables.init();
 
   setInterval(() => {
-    document.querySelector('.sumValues').classList.add('showButtonSum');
+    document.querySelector('.calcTotalButton ').classList.add('showButtonSum');
   }, 3000);
 
-  const requireCalc = document.querySelector('#sumValues');
+  const requireCalc = document.querySelector('#sum-values-button');
   requireCalc.addEventListener('click', () => {
     const calc = new Calc('.card', '.received', '.credit', '.pix', '.expenses', '.closed');
 

@@ -5,15 +5,10 @@
   box-sizing: border-box;
 }
 
-table.firstTable,
 section.tablesValues,
 input.sumValues,
 input.recalc, input.generateReport {
   display: none;
-}
-
-table.show {
-  display: inline-block;
 }
 
 section.showContainer,
@@ -22,10 +17,6 @@ input.showButtonRecalc, input.showButtonGenerate{
   display: block;
 }
 
-.button {
-  cursor: pointer;
-}
-
 html, body{
-  overflow-x: hidden;
+  overflow: hidden;
 }
