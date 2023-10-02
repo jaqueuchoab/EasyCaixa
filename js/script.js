@@ -1,4 +1,4 @@
-import GetDates from './module/getDates.js';
+import GetDates from './module/GetDates.js';
 import CreateTables from './module/createTables.js';
 import Calc from './module/calc.js';
 import InsertValuesContainer from './module/insertValuesContainer.js';
@@ -11,7 +11,7 @@ sendDate.addEventListener('click', () => {
   document.querySelector('.tablesInput').classList.add('borderActive');
   document.querySelector('.informeInitial').classList.add('informeInitialNot');
 
-  const createTables = new CreateTables(getDates.getDatesMethod());
+  const createTables = new CreateTables(getDates.getDates());
   createTables.init();
 
   setInterval(() => {
