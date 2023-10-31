@@ -49,21 +49,35 @@ export default class GetDates {
   }
 
   /**
-   * pt-BR: getDatesMethod é um método que captura os valores dos elementos de input e utiliza outros métodos da
-   * classe GetDates para formatar o dia/mês para que posteriormente ele possa ser usado.
+   * pt-BR: formattingDatesMethod é um método que captura os valores dos elementos de input e utiliza outros métodos * da classe GetDates para formatar o dia/mês para que posteriormente ele possa ser usado.
    * 
-   * en-US: getDatesMethod is a method that captures the values ​​of input elements and uses other methods of the 
-   * GetDates class to format the day/month so that it can be used later.
+   * en-US: formattingDatesMethod is a method that captures the values ​​of input elements and uses other methods of * the GetDates class to format the day/month so that it can be used later.
+   * 
+   * @returns {Object[]} [dateInitPeriod, dateEndPeriod]
    */
   formattingDatesMethod()
   {
     this.valueDateInitial = this.dateInitial.value;
     this.valueDateEnd = this.dateEnd.value;
+
     this.dayMonthInitial = this.cleanDates(this.valueDateInitial);
     this.dayMonthEnd = this.cleanDates(this.valueDateEnd);
+
     this.dayMonthConst = [this.dayMonthInitial, this.dayMonthEnd];
+
     this.arrayDatesInt = this.sliceDateParseInt(this.dayMonthConst);
-    return this.arrayDatesInt;
+
+    const objectDate = {
+      dateInitPeriod: {
+        day: this.arrayDatesInt[0][0], 
+        month: this.arrayDatesInt[0][1]
+      },
+      dateEndPeriod: {
+        day: this.arrayDatesInt[1][0], 
+        month: this.arrayDatesInt[1][1]
+      }
+    };
+    return objectDate;
   }
 
   getDates() {
