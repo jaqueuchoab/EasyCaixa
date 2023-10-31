@@ -1,0 +1,62 @@
+[
+  {
+    "month": "Janeiro",
+    "days": 31,
+    "code": 1
+  },
+  {
+    "month": "Fevereiro",
+    "days": 28,
+    "code": 2
+  },
+  {
+    "month": "Março",
+    "days": 31,
+    "code": 3
+  },
+  {
+    "month": "Abril",
+    "days": 30,
+    "code": 4
+  },
+  {
+    "month": "Maio",
+    "days": 31,
+    "code": 5
+  },
+  {
+    "month": "Junho",
+    "days": 30,
+    "code": 6
+  },
+  {
+    "month": "Julho",
+    "days": 31,
+    "code": 7
+  },
+  {
+    "month": "Agosto",
+    "days": 31,
+    "code": 8
+  },
+  {
+    "month": "Setembro",
+    "days": 30,
+    "code": 9
+  },
+  {
+    "month": "Outubro",
+    "days": 31,
+    "code": 10
+  },
+  {
+    "month": "Novembro",
+    "days": 30,
+    "code": 11
+  },
+  {
+    "month": "Dezembro",
+    "days": 31,
+    "code": 12
+  }
+]
