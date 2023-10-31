@@ -1,12 +1,12 @@
 import GetDates from './module/GetDates.js';
-import CreateTables from './module/createTables.js';
+import CreateTables from './module/CreateTables.js';
 import Calc from './module/calc.js';
 import InsertValuesContainer from './module/insertValuesContainer.js';
 import GenerateReport from './module/generateReport.js';
 
 const getDates = new GetDates('#input-date-inicio', '#input-date-fim');
-
 const sendDate = document.querySelector('#send-date');
+
 sendDate.addEventListener('click', () => {
   document.querySelector('.tablesInput').classList.add('borderActive');
   document.querySelector('.informeInitial').classList.add('informeInitialNot');

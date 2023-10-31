@@ -1,62 +1,62 @@
 [
   {
-    "mês": "Janeiro",
-    "dias": 31,
+    "month": "Janeiro",
+    "days": 31,
     "code": 1
   },
   {
-    "mês": "Fevereiro",
-    "dias": 28,
+    "month": "Fevereiro",
+    "days": 28,
     "code": 2
   },
   {
-    "mês": "Março",
-    "dias": 31,
+    "month": "Março",
+    "days": 31,
     "code": 3
   },
   {
-    "mês": "Abril",
-    "dias": 30,
+    "month": "Abril",
+    "days": 30,
     "code": 4
   },
   {
-    "mês": "Maio",
-    "dias": 31,
+    "month": "Maio",
+    "days": 31,
     "code": 5
   },
   {
-    "mês": "Junho",
-    "dias": 30,
+    "month": "Junho",
+    "days": 30,
     "code": 6
   },
   {
-    "mês": "Julho",
-    "dias": 31,
+    "month": "Julho",
+    "days": 31,
     "code": 7
   },
   {
-    "mês": "Agosto",
-    "dias": 31,
+    "month": "Agosto",
+    "days": 31,
     "code": 8
   },
   {
-    "mês": "Setembro",
-    "dias": 30,
+    "month": "Setembro",
+    "days": 30,
     "code": 9
   },
   {
-    "mês": "Outubro",
-    "dias": 31,
+    "month": "Outubro",
+    "days": 31,
     "code": 10
   },
   {
-    "mês": "Novembro",
-    "dias": 30,
+    "month": "Novembro",
+    "days": 30,
     "code": 11
   },
   {
-    "mês": "Dezembro",
-    "dias": 31,
+    "month": "Dezembro",
+    "days": 31,
     "code": 12
   }
 ]

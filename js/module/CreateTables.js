@@ -1,18 +1,20 @@
 export default class CreateTables {
   constructor(date) {
-    this.datesArray = date;
-    this.datesInit = this.datesArray[0];
-    this.datesEnd = this.datesArray[1];
+    this.datesObject = date;
+    this.datesInit = this.datesObject.dateInitPeriod;
+    this.datesEnd = this.datesObject.dateEndPeriod;
   }
   
-  async fetchMonth(url) {
+  async fetchMonthReference(url) {
     try {
       await fetch(url).then(response => response.json()).then(response => {
         this.arrayData = response.map(element => {
+          console.log(element);
+          console.log(Object.entries(element));
           return Object.entries(element);
         });
         this.monthAndAmountDays = this.arrayData.map((element) => {
-          if (element[2][1] == this.datesInit[1]) {
+          if (element[2][1] == this.datesObject.dateInitPeriod.month) {
             // Mês
             this.monthInit = element[0][1];
             // Quantidade de dias do mês
@@ -143,7 +145,7 @@ export default class CreateTables {
   }
 
   init() {
-    this.fetchMonth('https://jaqueuchoab.github.io/EasyCaixa/quantMeses.json');
+    this.fetchMonthReference('https://jaqueuchoab.github.io/EasyCaixa/quantMeses.json');
     return this;
   }
 }
