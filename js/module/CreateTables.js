@@ -5,7 +5,7 @@ export default class CreateTables {
     this.datesEnd = this.datesObject.dateEndPeriod;
   }
   
-  async fetchMonthReference(url) {
+  async fetchMonthReference(url, monthCode) {
     try {
       await fetch(url).then(response => response.json()).then(response => {
         this.arrayData = response.map(element => {
@@ -145,7 +145,7 @@ export default class CreateTables {
   }
 
   init() {
-    this.fetchMonthReference('https://jaqueuchoab.github.io/EasyCaixa/quantMeses.json');
+    this.fetchMonthReference('../../months.json');
     return this;
   }
 }
