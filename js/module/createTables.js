@@ -143,7 +143,7 @@ export default class CreateTables {
   }
 
   init() {
-    this.fetchMonth('https://jaqueuchoab.github.io/EasyCaixa/quantMeses.json');
+    this.fetchMonth('https://jaqueuchoab.github.io/EasyCaixa/months.json');
     return this;
   }
 }
