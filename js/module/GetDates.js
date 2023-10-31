@@ -2,8 +2,6 @@ export default class GetDates {
   constructor(dateInit, dateEnd) {
     this.dateInitial = document.querySelector(dateInit);
     this.dateEnd = document.querySelector(dateEnd);
-  
-    this.getDatesMethod = this.getDatesMethod.bind(this);
   }
 
   /**
