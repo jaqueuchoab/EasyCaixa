@@ -4,38 +4,16 @@ export default class CreateTables {
     this.datesInit = this.datesObject.dateInitPeriod;
     this.datesEnd = this.datesObject.dateEndPeriod;
   }
-  
-  async fetchMonthReference(url, monthCode) {
-    try {
-      await fetch(url).then(response => response.json()).then(response => {
-        this.arrayData = response.map(element => {
-          console.log(element);
-          console.log(Object.entries(element));
-          return Object.entries(element);
-        });
-        this.monthAndAmountDays = this.arrayData.map((element) => {
-          if (element[2][1] == this.datesObject.dateInitPeriod.month) {
-            // Mês
-            this.monthInit = element[0][1];
-            // Quantidade de dias do mês
-            this.amountDays = element[1][1];
-            // Código do mês
-            this.monthReference = element[2][1];
 
-            this.tablesLength = this.lengthTables(this.amountDays);
-            this.creatingTables(this.tablesLength, this.amountDays, this.monthReference);
-            return this.tablesLength;
-          }
-        });
-      });
+  creatingTables(dateInitMonth, dateInitDetails) {
+    if (dateInitMonth == dateInitDetails.month) {
+      this.tablesLength = this.lengthTables(dateInitDetails.days);
+      this.structureTables(this.tablesLength, dateInitDetails.days, this.dateInitDetails.month);
+      return this.tablesLength;
     }
-    catch(err) {
-      console.log(err);
-    }
-    return this.tablesLength;
   }
 
-  lengthTables(monthInitIndex) {
+  lengthTables(amountDaysMonth) {
     console.log(this.datesInit, this.datesEnd);
     if (this.datesInit[1] > this.datesEnd[1])
     {
@@ -48,17 +26,17 @@ export default class CreateTables {
       {
         if (this.datesInit[0] == this.datesEnd[0])
         {
-          this.quantDays = (this.datesEnd[1] - this.datesInit[1]) * monthInitIndex;
+          this.quantDays = (this.datesEnd[1] - this.datesInit[1]) * amountDaysMonth;
         }
         else
         {
           if (this.datesInit[0] > this.datesEnd[0])
           {
-            this.quantDays = monthInitIndex - (this.datesInit[0] - this.datesEnd[0]);
+            this.quantDays = amountDaysMonth - (this.datesInit[0] - this.datesEnd[0]);
           }
           else
           {
-            this.quantDays = monthInitIndex + (this.datesEnd[0] - this.datesInit[0]);
+            this.quantDays = amountDaysMonth + (this.datesEnd[0] - this.datesInit[0]);
           }
         }
       }
@@ -93,7 +71,7 @@ export default class CreateTables {
     return `${this.dayForShow}/${this.monthForShow}/${dateObj.getFullYear()}`;
   }
 
-  creatingTables(amountDays, amountDaysMonth, monthReference){
+  structureTables(amountTables, amountDaysMonth, monthReference){
     this.contentTable = document.querySelector('.tablesInput');
     this.tableComponent = document.querySelector('.tableComponentInput');
     this.datesContentArray = [];
@@ -143,9 +121,21 @@ export default class CreateTables {
 
     return this.qtdTablesCreated;
   }
+  
+  fetchDetailsDateReference = async(url, monthCode) => {
+    try {
+      this.dateInitDetails = await fetch(url)
+        .then(response => response.json())
+        .then(response => response.filter(element => element.code === monthCode)[0]);
+      console.log(this.dateInitDetails);
+      this.creatingTables(this.datesInit.month, this.dateInitDetails);
+    }
+    catch(err) {
+      console.log(err);
+    }
+  }
 
-  init() {
-    this.fetchMonthReference('../../months.json');
-    return this;
+  initFetch() {
+    this.fetchDetailsDateReference('../../months.json', this.datesInit.month);
   }
 }

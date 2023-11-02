@@ -12,7 +12,7 @@ sendDate.addEventListener('click', () => {
   document.querySelector('.informeInitial').classList.add('informeInitialNot');
 
   const createTables = new CreateTables(getDates.getDates());
-  createTables.init();
+  createTables.initFetch();
 
   setInterval(() => {
     document.querySelector('.calcTotalButton ').classList.add('showButtonSum');
