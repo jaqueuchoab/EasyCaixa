@@ -23,9 +23,11 @@ export default class GetDates {
     * en-US: Regex command that captures a group with a 4-digit sequence of [0-9] at the beginning of the string and
     * searches for it hyphens.
     */
-    this.regex = /(^\d{4})?[-]/g;
-    this.dateChange = date.replace(this.regex, '');
-    return this.dateChange;
+    const regexClear = /(^\d{4})?[-]/g;
+    const regexYear =  /(^\d{4})/g;
+    const yearDate = date.match(regexYear)
+    this.dateChange = date.replace(regexClear, '');
+    return {dayMonth: this.dateChange, year: yearDate};
   }
 
   /**
@@ -62,21 +64,23 @@ export default class GetDates {
 
     this.dayMonthInitial = this.cleanDates(this.valueDateInitial);
     this.dayMonthEnd = this.cleanDates(this.valueDateEnd);
-
-    this.dayMonthConst = [this.dayMonthInitial, this.dayMonthEnd];
+    this.dayMonthConst = [this.dayMonthInitial.dayMonth, this.dayMonthEnd.dayMonth];
 
     this.arrayDatesInt = this.sliceDateParseInt(this.dayMonthConst);
 
     const objectDate = {
       dateInitPeriod: {
         day: this.arrayDatesInt[0][0], 
-        monthCode: this.arrayDatesInt[0][1]
+        monthCode: this.arrayDatesInt[0][1],
+        year: Number.parseInt(this.dayMonthInitial.year)
       },
       dateEndPeriod: {
         day: this.arrayDatesInt[1][0], 
-        monthCode: this.arrayDatesInt[1][1]
+        monthCode: this.arrayDatesInt[1][1],
+        year: Number.parseInt(this.dayMonthEnd.year)
       }
     };
+    console.log(objectDate);
     return objectDate;
   }
 
