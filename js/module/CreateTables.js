@@ -76,7 +76,7 @@ export default class CreateTables {
     this.tableComponent = document.querySelector('.tableComponentInput');
     this.datesContentArray = [];
 
-    for (let index = 0; index < amountDays; index++) {
+    for (let index = 0; index < amountDaysMonth; index++) {
       this.tableElement = document.createElement('table');
       this.contentTable.appendChild(this.tableElement);
       this.tableElement.setAttribute('border', '1px');
@@ -127,7 +127,7 @@ export default class CreateTables {
       this.dateInitDetails = await fetch(url)
         .then(response => response.json())
         .then(response => response.filter(element => element.code === monthCode)[0]);
-      console.log(this.dateInitDetails);
+
       this.creatingTables(this.datesInit.month, this.dateInitDetails);
     }
     catch(err) {
