@@ -70,11 +70,11 @@ export default class GetDates {
     const objectDate = {
       dateInitPeriod: {
         day: this.arrayDatesInt[0][0], 
-        month: this.arrayDatesInt[0][1]
+        monthCode: this.arrayDatesInt[0][1]
       },
       dateEndPeriod: {
         day: this.arrayDatesInt[1][0], 
-        month: this.arrayDatesInt[1][1]
+        monthCode: this.arrayDatesInt[1][1]
       }
     };
     return objectDate;
