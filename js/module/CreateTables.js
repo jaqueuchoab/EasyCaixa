@@ -5,91 +5,73 @@ export default class CreateTables {
     this.datesEnd = this.datesObject.dateEndPeriod;
   }
 
+  // OK
   creatingTables(dateInitMonth, dateInitDetails) {
     if (dateInitMonth == dateInitDetails.code) {
-      const tablesLength = this.lengthTables(dateInitDetails.days);
+      const tablesLength = this.lengthTables(dateInitDetails);
 
       this.structureTables(tablesLength, dateInitDetails.days, dateInitDetails.month);
     }
   }
 
-  lengthTables(amountDaysMonth) {
+  // OK, só falta tratar de um ano para outro e de meses em que a quantidade de seus dias se diferem
+  lengthTables(dateInitDetails) {
     let quantifyTables = 0;
-    if (this.datesInit.monthCode > this.datesEnd.monthCode)
-    {
-      /**  BUG/INCONSTÂNCIA: A possibilide de determinar um período que se incia em um ano e acaba em outro, exemplo:
-      *   - data de início: 
-      *      mês: novembro, código: 11, ano: 2018
-      *   - data de fim: 
-      *      mês: janeiro, código: 01, ano: 2019
-      *   esse caso não passará nesta condição do if atual, pois ao comparar os códigos dos meses o 
-      *   de novembro(início) é maior que o de janeiro(final) porém é uma data válida por serem em anos diferentes.
-      */
+    // Erros
+    // O mês de fim vem antes do mês de início, data inválida
+    if (this.datesInit.monthCode > this.datesEnd.monthCode && this.datesInit.year == this.datesEnd.year){
       // *ERRO*: Montar página ou meio visual pelo qual o erro será mostrado.
       console.log('Data inválida: Mês de ínicio é após o mês de fim do período.');
+      return "ERRO";
     }
-    else
-    {
-      // Meses diferentes
-      if (this.datesInit.monthCode !== this.datesEnd.monthCode)
-      {
-        // Dias iguais
-        if (this.datesInit.day == this.datesEnd.day)
-        {
-          quantifyTables = (this.datesEnd.monthCode - this.datesInit.monthCode) * amountDaysMonth;
-        }
-        else
-        {
-          // Dia de início maior que o dia final
-          if (this.datesInit.day > this.datesEnd.day)
-          {
-            quantifyTables = amountDaysMonth - (this.datesInit.day - this.datesEnd.day);
-          }
-          else
-          {
-            // ELSE: Dia de início não é maior que o dia final
-            quantifyTables = amountDaysMonth + (this.datesEnd.day - this.datesInit.day);
-          }
-        }
+
+    // Dia de início não é maior que o dia de fim
+    if (this.datesInit.day > this.datesEnd.day && this.datesInit.monthCode == this.datesEnd.monthCode) {
+      /**
+      * *ERRO*: Não há a possibilide de haver um período em que no mesmo mês há o seu e início e fim, e o seu 
+       * dia de início é MAIOR que seu dia de fim, exemplo:
+       * - data de início: 
+       *  mês: novembro, dia início: 10
+       * - data de fim: 
+       *  mês: novembro, dia fim: 09
+       */
+      console.log("Data inválida: O dia de início é maior que o dia de fim no mesmo mês.");
+      return "ERRO";
+    } 
+
+    // Meses diferentes
+    if (this.datesInit.monthCode !== this.datesEnd.monthCode) {
+      // Dias iguais
+      if (this.datesInit.day == this.datesEnd.day) {
+        return quantifyTables = (this.datesEnd.monthCode - this.datesInit.monthCode) * dateInitDetails.days;
       }
-      else
-      {
-        // ELSE: Meses iguais
-        // Dias de início e fim iguais 
-        if (this.datesInit.day == this.datesEnd.day) quantifyTables = 1;
-        else
-        {
-          // ELSE: Dias não iguais
-          // Dia de início maior que o dia de fim
-          if (this.datesInit.day > this.datesEnd.day)
-          {
-            /**
-             * *ERRO*: Não há a possibilide de haver um período em que no mesmo mês há o seu e início e fim, e o seu 
-             * dia de início é MAIOR que seu dia de fim, exemplo:
-             * - data de início: 
-             *  mês: novembro, dia início: 10
-             * - data de fim: 
-             *  mês: novembro, dia fim: 09
-             */
-            console.log("Data inválida: O dia de início é maior que o dia de fim no mesmo mês.");
-          }
-          else
-          {
-            // ELSE: Dia de início não é maior que o dia de fim
-            quantifyTables = this.datesEnd.day - this.datesInit.day;
-          }
+      else {
+        // Dia de início maior que o dia final
+        if (this.datesInit.day > this.datesEnd.day) {
+          return quantifyTables = dateInitDetails.days - ((this.datesInit.day - 1) - this.datesEnd.day);
+        }
+        else {
+          // ELSE: Dia de início não é maior que o dia final
+          return quantifyTables = dateInitDetails.days + ((this.datesEnd.day + 1) - this.datesInit.day);
         }
       }
     }
-    console.log(quantifyTables);
-    return quantifyTables;
+
+    // Meses iguais
+    if (this.datesInit.day == this.datesEnd.day) return quantifyTables = 1;
+    else {
+      // ELSE: Dias não iguais
+      // Dia de início maior que o dia de fim no mesmo mês
+      console.log(this.datesEnd.day - (this.datesInit.day - 1));
+      return quantifyTables = this.datesEnd.day - (this.datesInit.day - 1);
+    }
   }
 
-  datesCompostion(initDay, initEnd){
-    this.dayForShow = initDay <= 9 ? `0${initDay}` : `${initDay}`;
-    this.monthForShow = initEnd <= 9 ? `0${initEnd}` : `${initEnd}`;
-    const dateObj = new Date();
-    return `${this.dayForShow}/${this.monthForShow}/${dateObj.getFullYear()}`;
+  // OK, futuramente indicar o ano também
+  datesCompostion(initDay, endDay, year){
+    const dayForShow = initDay <= 9 ? `0${initDay}` : `${initDay}`;
+    const monthForShow = endDay <= 9 ? `0${endDay}` : `${endDay}`;
+    return `${dayForShow}/${monthForShow}`;
   }
 
   structureTables(amountTables, amountDaysMonth, monthReference){
@@ -137,12 +119,12 @@ export default class CreateTables {
       this.incrementDay++;
     });
 
-    this.qtdTablesCreated = amountTables + 1;
     console.log(this.qtdTablesCreated)
 
     return this.qtdTablesCreated;
   }
   
+  // OK
   fetchDetailsDateReference = async(url, monthCode) => {
     try {
       this.dateInitDetails = await fetch(url)
@@ -156,6 +138,7 @@ export default class CreateTables {
     }
   }
 
+  // OK
   initFetch() {
     this.fetchDetailsDateReference('../../months.json', this.datesInit.monthCode);
   }

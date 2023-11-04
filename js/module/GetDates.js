@@ -80,7 +80,6 @@ export default class GetDates {
         year: Number.parseInt(this.dayMonthEnd.year)
       }
     };
-    console.log(objectDate);
     return objectDate;
   }
 
