@@ -74,52 +74,52 @@ export default class CreateTables {
     return `${dayForShow}/${monthForShow}`;
   }
 
-  structureTables(amountTables, amountDaysMonth, monthReference){
-    this.contentTable = document.querySelector('.tablesInput');
+  structureTables(amountTables, dateInitDays, dateInitMonth){
+    this.containerTable = document.querySelector('.tablesContainer');
     this.tableComponent = document.querySelector('.tableComponentInput');
-    this.datesContentArray = [];
 
-    for (let index = 0; index < amountTables; index++) {
+    for (let index = 1; index < amountTables; index++) {
       this.tableElement = document.createElement('table');
-      this.contentTable.appendChild(this.tableElement);
+      console.log(this.tableElement);
+      this.containerTable.appendChild(this.tableElement);
       this.tableElement.setAttribute('border', '1px');
       this.tableElement.classList.add('tableComponentInput');
       this.tableElement.innerHTML = `<table border="1px">${this.tableComponent.innerHTML}</table>`;
     }
 
-    this.contentDate = document.querySelectorAll('.celulaDate');
+    // Cortar a função aqui
+    this.containerDate = document.querySelectorAll('.celulaDate');
+    this.datescontainerArray = [];
 
     this.incrementDay = this.datesInit.day;
     this.incrementMonth = this.datesInit.monthCode;
 
-    this.contentDate.forEach((element, index) => {
+    this.containerDate.forEach((element, index) => {
       this.paraghElement = document.createElement('p');
       element.appendChild(this.paraghElement);
       this.paraghElement.classList.add('dateContainer');
 
-      if (this.incrementDay <= amountDaysMonth)
+      if (this.incrementDay <= dateInitDays)
       {
         this.paraghElement.innerText = this.datesCompostion(this.incrementDay, this.incrementMonth);
-        this.datesContentArray[index] = this.datesCompostion(this.incrementDay, this.incrementMonth);
+        this.datescontainerArray[index] = this.datesCompostion(this.incrementDay, this.incrementMonth);
       }
       else
       {
-        if (this.incrementDay > amountDaysMonth) {
+        if (this.incrementDay > dateInitDays) {
           this.incrementDay *= 0;
           this.incrementDay += 1;
         }
 
-        if (this.datesEnd.monthCode == monthReference + 1) {
+        if (this.datesEnd.monthCode == dateInitMonth + 1) {
           this.incrementMonth += 1;
           this.paraghElement.innerText = this.datesCompostion(this.incrementDay, this.datesEnd.monthCode);
-          this.datesContentArray[index] = this.datesCompostion(this.incrementDay, this.incrementMonth);
+          this.datescontainerArray[index] = this.datesCompostion(this.incrementDay, this.incrementMonth);
         }
       }
 
       this.incrementDay++;
     });
-
-    console.log(this.qtdTablesCreated)
 
     return this.qtdTablesCreated;
   }
@@ -141,5 +141,6 @@ export default class CreateTables {
   // OK
   initFetch() {
     this.fetchDetailsDateReference('../../months.json', this.datesInit.monthCode);
+
   }
 }

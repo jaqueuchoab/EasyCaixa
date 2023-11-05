@@ -8,7 +8,7 @@ const getDates = new GetDates('#input-date-inicio', '#input-date-fim');
 const sendDate = document.querySelector('#send-date');
 
 sendDate.addEventListener('click', () => {
-  document.querySelector('.tablesInput').classList.add('borderActive');
+  document.querySelector('.tablesContainer').classList.add('borderActive');
   document.querySelector('.informeInitial').classList.add('informeInitialNot');
 
   const createTables = new CreateTables(getDates.getDates());
