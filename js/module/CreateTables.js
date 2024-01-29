@@ -14,7 +14,6 @@ export default class CreateTables {
     }
   }
 
-  // OK, só falta tratar de um ano para outro e de meses em que a quantidade de seus dias se diferem
   lengthTables(dateInitDetails) {
     let quantifyTables = 0;
     // Erros
@@ -67,7 +66,6 @@ export default class CreateTables {
     }
   }
 
-  // OK, futuramente indicar o ano também
   datesCompostion(initDay, endDay, year){
     const dayForShow = initDay <= 9 ? `0${initDay}` : `${initDay}`;
     const monthForShow = endDay <= 9 ? `0${endDay}` : `${endDay}`;
@@ -87,44 +85,46 @@ export default class CreateTables {
       this.tableElement.innerHTML = `<table border="1px">${this.tableComponent.innerHTML}</table>`;
     }
 
-    // Cortar a função aqui
-    this.containerDate = document.querySelectorAll('.celulaDate');
-    this.datescontainerArray = [];
+    this.insertDateContent(dateInitDays, dateInitMonth);
 
-    this.incrementDay = this.datesInit.day;
-    this.incrementMonth = this.datesInit.monthCode;
+    return this.qtdTablesCreated;
+  }
+
+  insertDateContent(dateInitDays, dateInitMonth) {
+    this.containerDate = document.querySelectorAll('.celulaDate');
+    this.datesContainerArray = [];
+
+    let incrementDay = this.datesInit.day;
+    let incrementMonth = this.datesInit.monthCode;
 
     this.containerDate.forEach((element, index) => {
       this.paraghElement = document.createElement('p');
       element.appendChild(this.paraghElement);
       this.paraghElement.classList.add('dateContainer');
 
-      if (this.incrementDay <= dateInitDays)
+      if (incrementDay <= dateInitDays)
       {
-        this.paraghElement.innerText = this.datesCompostion(this.incrementDay, this.incrementMonth);
-        this.datescontainerArray[index] = this.datesCompostion(this.incrementDay, this.incrementMonth);
+        this.paraghElement.innerText = this.datesCompostion(incrementDay, incrementMonth);
+        this.datesContainerArray[index] = this.datesCompostion(incrementDay, incrementMonth);
       }
       else
       {
-        if (this.incrementDay > dateInitDays) {
-          this.incrementDay *= 0;
-          this.incrementDay += 1;
+        if (incrementDay > dateInitDays) {
+          incrementDay *= 0;
+          incrementDay += 1;
         }
 
         if (this.datesEnd.monthCode == dateInitMonth + 1) {
-          this.incrementMonth += 1;
-          this.paraghElement.innerText = this.datesCompostion(this.incrementDay, this.datesEnd.monthCode);
-          this.datescontainerArray[index] = this.datesCompostion(this.incrementDay, this.incrementMonth);
+          incrementMonth += 1;
+          this.paraghElement.innerText = this.datesCompostion(incrementDay, this.datesEnd.monthCode);
+          this.datescontainerArray[index] = this.datesCompostion(incrementDay, incrementMonth);
         }
       }
 
-      this.incrementDay++;
+      incrementDay++;
     });
-
-    return this.qtdTablesCreated;
   }
-  
-  // OK
+
   fetchDetailsDateReference = async(url, monthCode) => {
     try {
       this.dateInitDetails = await fetch(url)
@@ -138,7 +138,6 @@ export default class CreateTables {
     }
   }
 
-  // OK
   initFetch() {
     this.fetchDetailsDateReference('../../months.json', this.datesInit.monthCode);
 
