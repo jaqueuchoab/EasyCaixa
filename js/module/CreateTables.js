@@ -24,6 +24,13 @@ export default class CreateTables {
     }
   }
 
+  /**
+   * pt-BR: lengthTables realiza os devidos calculos para definir a quantidade de tabelas que são necessárias.
+   * 
+   * en-US: lengthTables performs the necessary calculations to define the number of tables that are needed.
+   * 
+   * @param {Object} dateInitDetails 
+   */
   lengthTables(dateInitDetails) {
     let quantifyTables = 0;
     // Erros
@@ -76,12 +83,34 @@ export default class CreateTables {
     }
   }
 
+  /**
+   * pt-BR: datesComposition formata as datas a serem mostradas nas celulas de data.
+   * 
+   * en-US: datesComposition formats the dates to be displayed in the date cells.
+   * 
+   * @param {Number} initDay 
+   * @param {Number} endDay 
+   * @param {Number} year 
+   * @returns {String}
+   */
   datesCompostion(initDay, endDay, year){
     const dayForShow = initDay <= 9 ? `0${initDay}` : `${initDay}`;
     const monthForShow = endDay <= 9 ? `0${endDay}` : `${endDay}`;
     return `${dayForShow}/${monthForShow}`;
   }
 
+  /**
+   * pt-BR: structureTables cria as tabelas necessárias para a inserção de dados
+   * espelhando-se em uma estrutura inserida no index.html.
+   * 
+   * en-US: structureTables creates the tables necessary for data insertion
+   * mirroring a structure inserted in index.html.
+   * 
+   * @param {Number} amountTables 
+   * @param {Number} dateInitDays 
+   * @param {Number} dateInitMonth 
+   * @returns
+   */
   structureTables(amountTables, dateInitDays, dateInitMonth){
     this.containerTable = document.querySelector('.tablesContainer');
     this.tableComponent = document.querySelector('.tableComponentInput');
@@ -100,6 +129,10 @@ export default class CreateTables {
     return this.qtdTablesCreated;
   }
 
+  /**
+   * @param {Number} dateInitDays 
+   * @param {Number} dateInitMonth 
+   */
   insertDateContent(dateInitDays, dateInitMonth) {
     this.containerDate = document.querySelectorAll('.celulaDate');
     this.datesContainerArray = [];
