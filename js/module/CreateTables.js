@@ -5,7 +5,17 @@ export default class CreateTables {
     this.datesEnd = this.datesObject.dateEndPeriod;
   }
 
-  // OK
+  /**
+   * pt-BR: creatingTables incializa a criação das tabelas a partir de uma verificação no mês de inicio e o código   * do mês em referência, se forem iguais, as tabelas podem ser criadas. Seguindo, usa-se uma função para denominar * a quantidade de tabelas a serem criadas, esse dado é repassado para a função que estrutura as tabelas 
+   * juntamente com outras informações.
+   * 
+   * en-US: creatingTables starts the creation of tables by checking the starting month and the code of the month in * reference, if they are the same, the tables can be created. Next, a function is used to name the number of 
+   * tables to be created, this data is passed on to the function that structures the tables
+   * along with other information.
+   * 
+   * @param {} dateInitMonth 
+   * @param {Object} dateInitDetails 
+   */
   creatingTables(dateInitMonth, dateInitDetails) {
     if (dateInitMonth == dateInitDetails.code) {
       const tablesLength = this.lengthTables(dateInitDetails);
