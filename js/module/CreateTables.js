@@ -130,6 +130,12 @@ export default class CreateTables {
   }
 
   /**
+   * pt-BR: insertDateContent realiza principalmente a inserção das datas de cada dia e também cuida da formatação 
+   * dessas datas de forma dinâmica seguindo a data limite informada pelo usuário.
+   * 
+   * en-US: insertDateContent mainly inserts the dates for each day and also takes care of formatting these dates  
+   * dynamically following the deadline entered by the user.
+   * 
    * @param {Number} dateInitDays 
    * @param {Number} dateInitMonth 
    */
@@ -168,6 +174,18 @@ export default class CreateTables {
     });
   }
 
+  /**
+   * pt-BR: fetchDetailsDateReference usando um arquivo json com informações sobre os meses do ano, traz informações 
+   * detalhadas de cada mês como dia, e nome do mês. A partir da comparação de um codigo em referência ao mês de 
+   * inicio o documento é percorrido e assim os detalhes são retornados.
+   * 
+   * en-US: fetchDetailsDateReference using a json file with information about the months of the year, brings 
+   * detailed information for each month such as day, and name of the month. By comparing a code with reference to 
+   * the starting month, the document is scanned and the details are returned.
+   * 
+   * @param {Number} dateInitDays 
+   * @param {Number} dateInitMonth 
+   */
   fetchDetailsDateReference = async(url, monthCode) => {
     try {
       this.dateInitDetails = await fetch(url)
@@ -183,6 +201,5 @@ export default class CreateTables {
 
   initFetch() {
     this.fetchDetailsDateReference('../../months.json', this.datesInit.monthCode);
-
   }
 }
