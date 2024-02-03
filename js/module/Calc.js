@@ -1,12 +1,16 @@
 export default class Calc {
   constructor(card, received, credit, pix, expenses, closed){
-    this.specification = [
-      this.valuesCard = document.querySelectorAll(card),
-      this.valuesReceived = document.querySelectorAll(received),
-      this.valuesCredit = document.querySelectorAll(credit),
-      this.valuesPix = document.querySelectorAll(pix),
-      this.valuesExpenses = document.querySelectorAll(expenses),
-      this.valuesExpenses = document.querySelectorAll(closed)
+    /**
+     * this._specification atributo que guarda todos os inputs de acordo com sua especificação (lista de nodelists)
+     * ver como posso colocar uma tag @
+     */
+    this._specification = [
+      this._valuesCard = document.querySelectorAll(card),
+      this._valuesReceived = document.querySelectorAll(received),
+      this._valuesCredit = document.querySelectorAll(credit),
+      this._valuesPix = document.querySelectorAll(pix),
+      this._valuesExpenses = document.querySelectorAll(expenses),
+      this._valuesCloseds = document.querySelectorAll(closed)
     ]
   }
 
@@ -42,7 +46,8 @@ export default class Calc {
   }
 
   init() {
-    this.arrayOfValues(this.specification);
-    return this.sumValues(this.arrayOfValues(this.specification));
+    console.log(this._specification)
+    this.arrayOfValues(this._specification);
+    return this.sumValues(this.arrayOfValues(this._specification));
   }
 }

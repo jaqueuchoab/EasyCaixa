@@ -1,6 +1,6 @@
 import GetDates from './module/GetDates.js';
 import CreateTables from './module/CreateTables.js';
-import Calc from './module/calc.js';
+import Calc from './module/Calc.js';
 import InsertValuesContainer from './module/insertValuesContainer.js';
 import GenerateReport from './module/generateReport.js';
 

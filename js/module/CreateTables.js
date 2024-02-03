@@ -78,8 +78,8 @@ export default class CreateTables {
     else {
       // ELSE: Dias não iguais
       // Dia de início maior que o dia de fim no mesmo mês
-      console.log(this._datesEnd.day - (this.datesInit.day - 1));
-      return quantifyTables = this._datesEnd.day - (this.datesInit.day - 1);
+      console.log(this._datesEnd.day - (this._datesInit.day - 1));
+      return quantifyTables = this._datesEnd.day - (this._datesInit.day - 1);
     }
   }
 
@@ -143,8 +143,8 @@ export default class CreateTables {
     this.containerDate = document.querySelectorAll('.celulaDate');
     this.datesContainerArray = [];
 
-    let incrementDay = this.datesInit.day;
-    let incrementMonth = this.datesInit.monthCode;
+    let incrementDay = this._datesInit.day;
+    let incrementMonth = this._datesInit.monthCode;
 
     this.containerDate.forEach((element, index) => {
       this.paraghElement = document.createElement('p');
@@ -192,7 +192,7 @@ export default class CreateTables {
         .then(response => response.json())
         .then(response => response.filter(element => element.code === monthCode)[0]);
 
-      this.creatingTables(this.datesInit.monthCode, this.dateInitDetails);
+      this.creatingTables(this._datesInit.monthCode, this.dateInitDetails);
     }
     catch(err) {
       console.log(err);
@@ -200,6 +200,6 @@ export default class CreateTables {
   }
 
   initFetch() {
-    this.fetchDetailsDateReference('../../months.json', this.datesInit.monthCode);
+    this.fetchDetailsDateReference('../../months.json', this._datesInit.monthCode);
   }
 }

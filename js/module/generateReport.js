@@ -1,4 +1,4 @@
-import Calc from './calc.js';
+import Calc from './Calc.js';
 
 export default class GenerateReport {
   constructor(amountDays, contentDate) {
