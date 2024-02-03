@@ -1,8 +1,8 @@
 export default class CreateTables {
   constructor(date) {
-    this.datesObject = date;
-    this.datesInit = this.datesObject.dateInitPeriod;
-    this.datesEnd = this.datesObject.dateEndPeriod;
+    this._datesObject = date;
+    this._datesInit = this._datesObject.dateInitPeriod;
+    this._datesEnd = this._datesObject.dateEndPeriod;
   }
 
   /**
@@ -35,14 +35,14 @@ export default class CreateTables {
     let quantifyTables = 0;
     // Erros
     // O mês de fim vem antes do mês de início, data inválida
-    if (this.datesInit.monthCode > this.datesEnd.monthCode && this.datesInit.year == this.datesEnd.year){
+    if (this._datesInit.monthCode > this._datesEnd.monthCode && this._datesInit.year == this._datesEnd.year){
       // *ERRO*: Montar página ou meio visual pelo qual o erro será mostrado.
       console.log('Data inválida: Mês de ínicio é após o mês de fim do período.');
       return "ERRO";
     }
 
     // Dia de início não é maior que o dia de fim
-    if (this.datesInit.day > this.datesEnd.day && this.datesInit.monthCode == this.datesEnd.monthCode) {
+    if (this._datesInit.day > this._datesEnd.day && this._datesInit.monthCode == this._datesEnd.monthCode) {
       /**
       * *ERRO*: Não há a possibilide de haver um período em que no mesmo mês há o seu e início e fim, e o seu 
        * dia de início é MAIOR que seu dia de fim, exemplo:
@@ -56,30 +56,30 @@ export default class CreateTables {
     } 
 
     // Meses diferentes
-    if (this.datesInit.monthCode !== this.datesEnd.monthCode) {
+    if (this._datesInit.monthCode !== this._datesEnd.monthCode) {
       // Dias iguais
-      if (this.datesInit.day == this.datesEnd.day) {
-        return quantifyTables = (this.datesEnd.monthCode - this.datesInit.monthCode) * dateInitDetails.days;
+      if (this._datesInit.day == this._datesEnd.day) {
+        return quantifyTables = (this._datesEnd.monthCode - this._datesInit.monthCode) * dateInitDetails.days;
       }
       else {
         // Dia de início maior que o dia final
-        if (this.datesInit.day > this.datesEnd.day) {
-          return quantifyTables = dateInitDetails.days - ((this.datesInit.day - 1) - this.datesEnd.day);
+        if (this._datesInit.day > this._datesEnd.day) {
+          return quantifyTables = dateInitDetails.days - ((this._datesInit.day - 1) - this._datesEnd.day);
         }
         else {
           // ELSE: Dia de início não é maior que o dia final
-          return quantifyTables = dateInitDetails.days + ((this.datesEnd.day + 1) - this.datesInit.day);
+          return quantifyTables = dateInitDetails.days + ((this._datesEnd.day + 1) - this._datesInit.day);
         }
       }
     }
 
     // Meses iguais
-    if (this.datesInit.day == this.datesEnd.day) return quantifyTables = 1;
+    if (this._datesInit.day == this._datesEnd.day) return quantifyTables = 1;
     else {
       // ELSE: Dias não iguais
       // Dia de início maior que o dia de fim no mesmo mês
-      console.log(this.datesEnd.day - (this.datesInit.day - 1));
-      return quantifyTables = this.datesEnd.day - (this.datesInit.day - 1);
+      console.log(this._datesEnd.day - (this.datesInit.day - 1));
+      return quantifyTables = this._datesEnd.day - (this.datesInit.day - 1);
     }
   }
 
@@ -163,9 +163,9 @@ export default class CreateTables {
           incrementDay += 1;
         }
 
-        if (this.datesEnd.monthCode == dateInitMonth + 1) {
+        if (this._datesEnd.monthCode == dateInitMonth + 1) {
           incrementMonth += 1;
-          this.paraghElement.innerText = this.datesCompostion(incrementDay, this.datesEnd.monthCode);
+          this.paraghElement.innerText = this.datesCompostion(incrementDay, this._datesEnd.monthCode);
           this.datescontainerArray[index] = this.datesCompostion(incrementDay, incrementMonth);
         }
       }
