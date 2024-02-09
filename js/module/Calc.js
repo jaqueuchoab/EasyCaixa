@@ -2,7 +2,6 @@ export default class Calc {
   constructor(card, received, credit, pix, expenses, closed){
     /**
      * this._specification atributo que guarda todos os inputs de acordo com sua especificação (lista de nodelists)
-     * ver como posso colocar uma tag @
      */
     this._specification = [
       this._valuesCard = document.querySelectorAll(card),
@@ -14,16 +13,29 @@ export default class Calc {
     ]
   }
 
-  getValueSpecification(arrayValues) {
-    this.values = arrayValues.map(element => {
+  /**
+   * pt-BR: O "transformadosEspecificação" é um método que recebe um objeto com especificações agrupadas, indicando 
+   * o elemento HTML associado ao valor. Ele extrai cada valor, converte-o em número (considerando seu tipo 
+   * primitivo como String) e retorna um array organizando os valores como números para cada especificação. 
+   * 
+   * en-US: "transformadosEspecificação" is a method that takes an object with grouped specifications, indicating 
+   * the HTML element associated with the value. It extracts each value, converts it into a number (considering its 
+   * primitive type as String), and returns an array organizing the values as numbers for each specification.
+   * 
+   * @param {Object} arrayValues 
+   * @returns {Object} valuesTransformed
+   */
+  processedValueSpecification(arrayValues) {
+    this.valuesTransformed = arrayValues.map(element => {
       return Number(element.value);
     });
-    return this.values;
+    console.log(typeof(this.valuesTransformed));
+    return this.valuesTransformed;
   }
 
   arrayOfValues(containersValues) {
     this.valuesContainer = containersValues.map((specification) => {
-      return this.getValueSpecification(Object.values(specification));
+      return this.processedValueSpecification(Object.values(specification));
     });
     return this.valuesContainer;
   }
